@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Food</title>
+
+  <link rel="stylesheet" href="order.css">
+</head>
+<body>
+
+<header class="navbar">
+  <h2>FreshNest Homemade Food</h2>
+</header>
+
+<section class="order-page">
+
+  <!-- VEG -->
+  <div class="menu">
+    <h2>🌱 Veg Meals</h2>
+
+    <div class="food-grid">
+
+      <div class="food-card">
+        <img src="veg thali.jpg">
+        <h3>Veg Thali</h3>
+        <p>₹120</p>
+        <button onclick="addToCart('Veg Thali',120)">Add</button>
+      </div>
+
+      <div class="food-card">
+        <img src="paneer curry.jpg">
+        <h3>Paneer Curry</h3>
+        <p>₹150</p>
+        <button onclick="addToCart('Paneer Curry',150)">Add</button>
+      </div>
+
+      <div class="food-card">
+        <img src="  veg biryani.jpg">
+        <h3>Veg biryani</h3>
+        <p>₹150</p>
+        <button onclick="addToCart('Veg biryani',150)">Add</button>
+      </div>
+
+       <div class="food-card">
+        <img src="mushroom.jpg">
+        <h3>Mushroom curry</h3>
+        <p>₹250</p>
+        <button onclick="addToCart('Mushroom curry',250)">Add</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NON VEG -->
+  <div class="menu">
+    <h2>🍗 Non-Veg Meals</h2>
+
+    <div class="food-grid">
+
+      <div class="food-card">
+        <img src="chicken curry.jpg">
+        <h3>Chicken Curry</h3>
+        <p>₹180</p>
+        <button onclick="addToCart('Chicken Curry',180)">Add</button>
+      </div>
+
+      <div class="food-card">
+        <img src="chicken biryani.jpg">
+        <h3>Chicken Biryani</h3>
+        <p>₹200</p>
+        <button onclick="addToCart('Chicken Biryani',200)">Add</button>
+      </div>
+
+      <div class="food-card">
+        <img src="chicken chilli.jpg">
+        <h3>Chicken chilli</h3>
+        <p>₹250</p>
+        <button onclick="addToCart('Chicken chilli',250)">Add</button>
+      </div>
+
+      <div class="food-card">
+        <img src="boiled egg.jpg">
+        <h3>Boiled egg</h3>
+        <p>₹50</p>
+        <button onclick="addToCart('Boiled egg',50)">Add</button>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!-- CART -->
+  <div class="cart">
+    <h2>Your Order 🛒</h2>
+
+    <ul id="cart-items"></ul>
+
+    <h3>Total: ₹<span id="total">0</span></h3>
+    <a href="payment.html">
+      <button class="checkout">Checkout</button>
+    </a>
+  </div>
+
+</section>
+
+<!-- JS -->
+<script>
+let total = 0;
+let deliveryCharge = 30;
+let isDeliveryAdded = false;
+
+function addToCart(item, price) {
+  const cart = document.getElementById("cart-items");
+
+  const li = document.createElement("li");
+  li.textContent = item + " - ₹" + price;
+  cart.appendChild(li);
+
+  total += price;
+
+  if (!isDeliveryAdded) {
+    const delivery = document.createElement("li");
+    delivery.textContent = "Delivery Charge - ₹30";
+    delivery.style.color = "red";
+    cart.appendChild(delivery);
+
+    total += deliveryCharge;
+    isDeliveryAdded = true;
+  }
+
+  document.getElementById("total").textContent = total;
+}
+</script>
+
+</body>
+</html>
